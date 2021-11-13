@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style type="text/css">
+	body{
+		background: #1b1b1b;
+		color: white;
+		margin-top: 80px;
+	}
+	p
+	{
+		width: 200px;
+	}
+</style>
+	
+<div class="container">
+	<!--for big screenc-->
+	<div class="d-none d-lg-block  ">
+	<div class="row row-cols-6">
+		{% for post in result %}
+
+			<div class="col">
+				<a href="{% url 'detail' post.pk %}">
+				<img src="{{post.image.url}}" class="rounded" width="150px" height="250px"><br>
+				<p style="width:150px;">{{post.title}}</p>
+			</a>
+			</div>
+			
+		{% endfor %}
+	</div>
+</div>
+
+<!--for medium size-->
+
+<div class="d-none d-md-block d-lg-none">
+	<div class="row row-cols-4">
+		{% for post in result %}
+
+			<div class="col">
+				<a href="{% url 'detail' post.pk %}">
+				<img src="{{post.image.url}}" class="rounded" width="150px" height="250px"><br>
+				<p style="width:130px;">{{post.title}}</p>
+			</a>
+			</div>
+			
+		{% endfor %}
+	</div>
+</div>
+
+<!--for tabs-->
+
+<div class="d-none d-sm-block d-md-none">
+	<div class="row row-cols-3">
+		{% for post in result %}
+
+			<div class="col">
+				<a href="{% url 'detail' post.pk %}">
+				<img src="{{post.image.url}}" class="rounded" width="150px" height="250px"><br>
+				<p style="width:150px;">{{post.title}}</p>
+			</a>
+			</div>
+			
+		{% endfor %}
+	</div>
+</div>
+<!--mobiles-->
+<div class="d-xs-block d-sm-none">
+	<div class="row row-cols-2">
+		{% for post in result %}
+
+			<div class="col">
+				<a href="{% url 'detail' post.pk %}">
+				<img src="{{post.image.url}}" class="rounded" width="150" height="250"><br>
+				<p style="width: 150px;">{{post.title}}</p>
+			</a>
+			</div>
+			
+		{% endfor %}
+	</div>
+</div>
+</div>
+{% endblock content %}
+

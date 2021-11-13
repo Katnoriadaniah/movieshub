@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="style.css">
+<style type="text/css">
+	body{
+		background: #1b1b1b;
+		color: white;
+		margin-top: 80px;
+	}
+	p
+	{
+		width: 200px;
+	}
+	.video
+	{
+		width: 100%;
+
+	}
+	.controls
+	{
+		display: flex;
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		flex-wrap: wrap;
+		background: white;
+	}
+</style>
+<div class="container">
+	<center>
+		<h3>Join our Telegram group and get latest update about our site</h3>
+		<br>
+		<a href="https://t.me/joinchat/YCXRNMkVqGo5Zjg1">
+		<img src="https://img.icons8.com/fluency/96/000000/telegram-app.png"/>
+	</a>
+	</center>
+
+	<h4 style="font-family: Arial, Helvetica, sans-serif; width:60%;">{{ post.title }}</h4>
+	<center>
+	<img src="{{post.image.url}}" class="rounded" width="100%"><br>
+	<h1><a href ="{{ post.link }}" style="color: White;">Watch Now</a></h1>
+</center>
+</div>
+<div class="container">
+	
+	
+ {% if user.is_authenticated %}
+<div class="container">
+	<a href="{% url 'update' post.pk %}">Update Movie</a><br>
+	<a href="{% url 'delete' post.pk %}">Delete Movie</a>
+	
+	
+</div>
+
+<script type="text/javascript" src="video.js">
+	
+</script>
+{% endif %}
+{% endblock content %}
